@@ -13,7 +13,7 @@ import os.path
 import random
 import webbrowser
 
-GOOGLE_MAPS_API_KEY = "Your Key Here"
+GOOGLE_MAPS_API_KEY = "AIzaSyA0YjGGV2G0opnE6V-AHVhoFoUe4fGH6NY"
 waypoints_file = "my-waypoints-dist-dur.tsv"
 
 #This is the general filename - as shorter routes are discovered the Population fitness score will be inserted into the filename
@@ -23,63 +23,79 @@ output_file = 'Output.html'
 
 #parameters for the Genetic algoritim
 thisRunGenerations=5000
-thisRunPopulation_size=100
+thisRunPopulation_size=300
 
+start_point = "BMW Welt, Munich, Germany"
+end_point = "Grauwallring 2, 27580, Bremerhaven, Germany"
+all_waypoints = [start_point,
+				
+				# Optional
+				#"Neuschwanstein Castle, Neuschwansteinstrabe 20, 87645 Schwangau, Germany",
+				#"Oberstdorf, Germany",
+				#"Crimeo 114, 6563 Mesocco, Switzerland",
+				#"Splugenpassstrasse 104, 7435 Splugen, Switzerland",
 
-all_waypoints = ["USS Alabama, Battleship Parkway, Mobile, AL",
-                 "Grand Canyon National Park, Arizona",
-                 "Toltec Mounds, Scott, AR",
-                 "San Andreas Fault, San Benito County, CA",
-                 "Cable Car Museum, 94108, 1201 Mason St, San Francisco, CA 94108",
-                 "Pikes Peak, Colorado",
-                 "The Mark Twain House & Museum, Farmington Avenue, Hartford, CT",
-                 "New Castle Historic District, Delaware",
-                 "White House, Pennsylvania Avenue Northwest, Washington, DC",
-                 "Cape Canaveral, FL",
-                 "Okefenokee Swamp Park, Okefenokee Swamp Park Road, Waycross, GA",
-                 "Craters of the Moon National Monument & Preserve, Arco, ID",
-                 "Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL",
-                 "West Baden Springs Hotel, West Baden Avenue, West Baden Springs, IN",
-                 "Terrace Hill, Grand Avenue, Des Moines, IA",
-                 "C. W. Parker Carousel Museum, South Esplanade Street, Leavenworth, KS",
-                 "Mammoth Cave National Park, Mammoth Cave Pkwy, Mammoth Cave, KY",
-                 "French Quarter, New Orleans, LA",
-                 "Acadia National Park, Maine",
-                 "Maryland State House, 100 State Cir, Annapolis, MD 21401",
-                 "USS Constitution, Boston, MA",
-                 "Olympia Entertainment, Woodward Avenue, Detroit, MI",
-                 "Fort Snelling, Tower Avenue, Saint Paul, MN",
-                 "Vicksburg National Military Park, Clay Street, Vicksburg, MS",
-                 "Gateway Arch, Washington Avenue, St Louis, MO",
-                 "Glacier National Park, West Glacier, MT",
-                 "Ashfall Fossil Bed, Royal, NE",
-                 "Hoover Dam, NV",
-                 "Omni Mount Washington Resort, Mount Washington Hotel Road, Bretton Woods, NH",
-                 "Congress Hall, Congress Place, Cape May, NJ 08204",
-                 "Carlsbad Caverns National Park, Carlsbad, NM",
-                 "Statue of Liberty, Liberty Island, NYC, NY",
-                 "Wright Brothers National Memorial Visitor Center, Manteo, NC",
-                 "Fort Union Trading Post National Historic Site, Williston, North Dakota 1804, ND",
-                 "Spring Grove Cemetery, Spring Grove Avenue, Cincinnati, OH",
-                 "Chickasaw National Recreation Area, 1008 W 2nd St, Sulphur, OK 73086",
-                 "Columbia River Gorge National Scenic Area, Oregon",
-                 "Liberty Bell, 6th Street, Philadelphia, PA",
-                 "The Breakers, Ochre Point Avenue, Newport, RI",
-                 "Fort Sumter National Monument, Sullivan's Island, SC",
-                 "Mount Rushmore National Memorial, South Dakota 244, Keystone, SD",
-                 "Graceland, Elvis Presley Boulevard, Memphis, TN",
-                 "The Alamo, Alamo Plaza, San Antonio, TX",
-                 "Bryce Canyon National Park, Hwy 63, Bryce, UT",
-                 "Shelburne Farms, Harbor Road, Shelburne, VT",
-                 "Mount Vernon, Fairfax County, Virginia",
-                 "Hanford Site, Benton County, WA",
-                 "Lost World Caverns, Lewisburg, WV",
-                 "Taliesin, County Road C, Spring Green, Wisconsin",
-                 "Yellowstone National Park, WY 82190"]
+				# Visit
+				"Milan Cathedral, Milan, Metropolitan City of Milan, Italy",
+				"Galleria Vittorio Emanuele II, Piazza del Duomo, Milan, Metropolitan City of Milan, Italy",
+				"Piazza della Signoria, Florence, Italy",
+				"Piazza del Duomo, Florence, Metropolitan City of Florence, Italy",
+				"Giardino Bardini, Florence, Metropolitan City of Florence, Italy",
+				"Colosseum, Piazza del Colosseo, Rome, Metropolitan City of Rome, Italy",
+				"Pantheon, Piazza della Rotonda, Rome, Italy",
+				"Roman Forum, Via della Salara Vecchia, Rome, Metropolitan City of Rome, Italy",
+				"Palatino. Via di San Gregorio, 00186 Roma, Italy",
+
+				# Drive through
+				"Piazza San Pietro, Vatican City",
+
+				# Visit
+				"Boccadasse, Genoa, Metropolitan City of Genoa, Italy",
+				"Piazza Raffaele De Ferrari, Genoa, Metropolitan City of Genoa, Italy",
+
+				# Drive through
+				"Vernazza, Province of La Spezia, Italy",
+
+				# Visit
+				"Port Hercule, Monte Carlo, Monaco",
+				"Place du Palais, Monaco-Ville, Monaco",
+				"Castle Hill, Nice, France",
+				"Promenade des Anglais, Nice, France",
+				"Mont Boron, Nice, France",
+
+				# Optional
+				#"Parc national des Calanques, Marseille, France",
+				#"Old Port of Marseille",
+				#"Place de la Comedie, Montpellier, France",
+
+				# Visit
+				"La Sagrada Familia, Carrer de Mallorca, 401, 08013 Barcelona, Spain",
+
+				# Drive through
+				"Placa Sant Eudald, 9, 17500 Ripoll, Girona, Spain",
+				"Andorra la Vella, Andorra",
+
+				# Optional
+				#"Place du Capitole, Toulouse, France",
+				#"Place de la Bourse, Bordeaux, France",
+
+				# Visit
+				"Eiffel Tower, Avenue Anatole France, Paris, France",
+				"Arc de Triomphe, Place Charles de Gaulle, Paris, France",
+				"Palace of Westminster, London, United Kingdom",
+				"Grand Place, Brussels, Belgium",
+				"Nurburgring, Nurburgring Boulevard, Nuerburg, Germany",
+
+				# Drive through
+				"Cathedrale Notre-Dame, Rue Notre Dame, Luxembourg City, Luxembourg",
+
+				# Visit
+				"Park Plaza Victoria Amsterdam, Damrak, Amsterdam, Netherlands",
+				end_point]
 
 def CreateOptimalRouteHtmlFile(optimal_route, distance, display=True):
     optimal_route = list(optimal_route)
-    optimal_route += [optimal_route[0]]
+    #optimal_route += [optimal_route[0]]
 
     Page_1 = """
     <!DOCTYPE html>
@@ -110,15 +126,18 @@ def CreateOptimalRouteHtmlFile(optimal_route, distance, display=True):
         </style>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
         <script>
-            var routes_list = []
+            var routes_list = [];
+            var distance = 0.0;
+            var duration = 0.0;
             var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
             var directionsDisplayOptions = {preserveViewport: true,
+            								durationInTraffic : true,
                                             markerOptions: markerOptions};
             var directionsService = new google.maps.DirectionsService();
             var map;
 
             function initialize() {
-              var center = new google.maps.LatLng(39, -96);
+              var center = new google.maps.LatLng(53, 9);
               var mapOptions = {
                 zoom: 5,
                 center: center
@@ -145,12 +164,22 @@ def CreateOptimalRouteHtmlFile(optimal_route, distance, display=True):
                   destination: end,
                   waypoints: waypts,
                   optimizeWaypoints: false,
-                  travelMode: google.maps.TravelMode.DRIVING
+                  travelMode: google.maps.TravelMode.DRIVING,
+                  durationInTraffic : true
               };
 
               directionsService.route(request, function(response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(response);      
+                    directionsDisplay.setDirections(response);
+
+                    // Total up the distance and duration of each leg.
+                    var legs = response.routes[0].legs;
+                    for(var i=0; i<legs.length; ++i) {
+                      distance += legs[i].distance.value;
+                      duration += legs[i].duration.value;
+                    }
+                    document.getElementById('distance').innerHTML = " Distance: " + (distance*0.000621371) + " miles";
+                    document.getElementById('duration').innerHTML = "Duration: " + (duration/60/60/24) + " days";    
                 }
               });
 
@@ -159,7 +188,7 @@ def CreateOptimalRouteHtmlFile(optimal_route, distance, display=True):
 
             function createRoutes(route) {
                 // Google's free map API is limited to 10 waypoints so need to break into batches
-                route.push(route[0]);
+                //route.push(route[0]);
                 var subset = 0;
                 while (subset < route.length) {
                     var waypointSubset = route.slice(subset, subset + 10);
@@ -183,7 +212,9 @@ def CreateOptimalRouteHtmlFile(optimal_route, distance, display=True):
         </script>
       </head>
       <body>
-        <div id="map-canvas"></div>
+        <div id="map-canvas" style="width: 100%; height: 90%;"></div>
+        <div id="duration">Duration: </div> 
+        <div id="distance">Distance: </div>
       </body>
     </html>
     """
@@ -222,6 +253,16 @@ def generate_random_agent():
     
     new_random_agent = list(all_waypoints)
     random.shuffle(new_random_agent)
+    try:
+    	new_random_agent.remove(start_point);
+    	new_random_agent.insert(0, start_point);
+    except:
+    	"Nothing"
+    try:
+    	new_random_agent.remove(end_point);
+    	new_random_agent.append(end_point);
+    except:
+    	"Nothing"
     return tuple(new_random_agent)
 
 def mutate_agent(agent_genome, max_mutations=3):
@@ -235,11 +276,11 @@ def mutate_agent(agent_genome, max_mutations=3):
     num_mutations = random.randint(1, max_mutations)
     
     for mutation in range(num_mutations):
-        swap_index1 = random.randint(0, len(agent_genome) - 1)
+        swap_index1 = random.randint(1, len(agent_genome) - 2)
         swap_index2 = swap_index1
 
         while swap_index1 == swap_index2:
-            swap_index2 = random.randint(0, len(agent_genome) - 1)
+            swap_index2 = random.randint(1, len(agent_genome) - 2)
 
         agent_genome[swap_index1], agent_genome[swap_index2] = agent_genome[swap_index2], agent_genome[swap_index1]
             
@@ -255,15 +296,18 @@ def shuffle_mutation(agent_genome):
     
     agent_genome = list(agent_genome)
     
-    start_index = random.randint(0, len(agent_genome) - 1)
+    start_index = random.randint(1, len(agent_genome) - 2)
     length = random.randint(2, 20)
     
     genome_subset = agent_genome[start_index:start_index + length]
     agent_genome = agent_genome[:start_index] + agent_genome[start_index + length:]
     
-    insert_index = random.randint(0, len(agent_genome) + len(genome_subset) - 1)
+    insert_index = random.randint(1, len(agent_genome) + len(genome_subset) - 2)
     agent_genome = agent_genome[:insert_index] + genome_subset + agent_genome[insert_index:]
     
+    agent_genome.remove(end_point)
+    agent_genome.append(end_point)
+
     return tuple(agent_genome)
 
 def generate_random_population(pop_size):
@@ -337,6 +381,20 @@ def run_genetic_algorithm(generations=5000, population_size=100):
             del population[i]
 
         population = new_population
+
+
+    # Print travel times
+    print("\nEstimated travel time (without/with) traffic:")
+    total_travel_time = 0.0
+    for index in range(len(current_best_genome)-1):
+    	waypoint1 = current_best_genome[index]
+    	waypoint2 = current_best_genome[index + 1]
+    	travel_time = 0.0
+    	travel_time = waypoint_durations[frozenset([waypoint1, waypoint2])]/60.0/60.0
+    	total_travel_time += travel_time
+    	print("From " + waypoint1 + " to " + waypoint2 + ": " + "{0:.2f}".format(travel_time) + "/" + "{0:.2f}".format(travel_time*1.5) + " hrs")
+
+    print ("Total travel time: " + "{0:.2f}".format(total_travel_time/24) + "/" + "{0:.2f}".format(total_travel_time/24*1.5) + " days")
     return current_best_genome
 
 
@@ -368,6 +426,7 @@ if __name__ == '__main__':
         gmaps = googlemaps.Client(GOOGLE_MAPS_API_KEY)
         for (waypoint1, waypoint2) in combinations(all_waypoints, 2):
             try:
+            	print("Routing from [" + waypoint1 + "] to [" + waypoint2 + "]");
                 route = gmaps.distance_matrix(origins=[waypoint1],
                                               destinations=[waypoint2],
                                               mode="driving", # Change to "walking" for walking directions,
