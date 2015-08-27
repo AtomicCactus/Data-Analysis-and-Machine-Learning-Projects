@@ -1,3 +1,8 @@
+#FORK!
+This is a fork of Randy Olson's script. Modifications include:
+- Point to point routing, instead of a round trip
+- Generated HTML files include distance in miles and time in days
+
 #Randy Olson's data analysis and machine learning projects
 
 © 2015 Randal S. Olson
